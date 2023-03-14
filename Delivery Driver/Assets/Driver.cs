@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Driver : MonoBehaviour
 {
-    private float steerSpeed = 300f;
-    private float moveSpeed = 20f;
+    [SerializeField] float steerSpeed = 1f;
+    [SerializeField] float moveSpeed = 0.01f;
+    
     void Start()
     {
         
@@ -16,8 +16,7 @@ public class Driver : MonoBehaviour
     {
         float steerAmount = Input.GetAxis("Horizontal") * steerSpeed * Time.deltaTime;
         float moveAmount = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
-
-        transform.Rotate(0,0, -steerAmount);
+        transform.Rotate(0, 0, -steerAmount);
         transform.Translate(0, moveAmount, 0);
     }
 }
